@@ -10,9 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # sonarcloud says it gets better analysis with a full clone
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
       - run: yarn install --immutable --immutable-cache --check-cache
       - id: test
         run: yarn test
+      - uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
