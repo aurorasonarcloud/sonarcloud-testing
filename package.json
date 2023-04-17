@@ -1,0 +1,14 @@
+{
+  "name": "sonarcloud-testing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules $(yarn bin jest) --coverage"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
